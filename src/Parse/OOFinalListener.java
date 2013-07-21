@@ -1,3 +1,5 @@
+package Parse;
+
 // Generated from C:\Users\Vitor\Desktop\WorkSpace\OO Final\src\Parse\OOFinal.g4 by ANTLR 4.0
 import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.Token;
