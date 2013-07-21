@@ -1,5 +1,5 @@
+// Generated from C:\Users\Vitor\Desktop\WorkSpace\OOLpParser\src\Parse\OOFinal.g4 by ANTLR 4.0
 package Parse;
-// Generated from C:\Users\Vitor\Desktop\WorkSpace\OO Final\src\Parse\OOFinal.g4 by ANTLR 4.0
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

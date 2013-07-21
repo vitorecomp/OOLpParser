@@ -1,5 +1,6 @@
+// Generated from C:\Users\Vitor\Desktop\WorkSpace\OOLpParser\src\Parse\OOFinal.g4 by ANTLR 4.0
 package Listeners;
-// Generated from C:\Users\Vitor\Desktop\WorkSpace\OO Final\src\Parse\OOFinal.g4 by ANTLR 4.0
+
 import Parse.OOFinalListener;
 import Parse.OOFinalParser;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -11,43 +12,10 @@ public class OOFinalBaseListener implements OOFinalListener {
 
     @Override
     public void enterBooleano(OOFinalParser.BooleanoContext ctx) {
-        System.out.print("sdasd");
     }
 
     @Override
     public void exitBooleano(OOFinalParser.BooleanoContext ctx) {
-    }
-
-    @Override
-    public void enterFactor(OOFinalParser.FactorContext ctx) {
-    }
-
-    @Override
-    public void exitFactor(OOFinalParser.FactorContext ctx) {
-    }
-
-    @Override
-    public void enterInteiro(OOFinalParser.InteiroContext ctx) {
-    }
-
-    @Override
-    public void exitInteiro(OOFinalParser.InteiroContext ctx) {
-    }
-
-    @Override
-    public void enterElse2(OOFinalParser.Else2Context ctx) {
-    }
-
-    @Override
-    public void exitElse2(OOFinalParser.Else2Context ctx) {
-    }
-
-    @Override
-    public void enterAnd(OOFinalParser.AndContext ctx) {
-    }
-
-    @Override
-    public void exitAnd(OOFinalParser.AndContext ctx) {
     }
 
     @Override
@@ -75,19 +43,11 @@ public class OOFinalBaseListener implements OOFinalListener {
     }
 
     @Override
-    public void enterValue(OOFinalParser.ValueContext ctx) {
+    public void enterCondicao(OOFinalParser.CondicaoContext ctx) {
     }
 
     @Override
-    public void exitValue(OOFinalParser.ValueContext ctx) {
-    }
-
-    @Override
-    public void enterSoma(OOFinalParser.SomaContext ctx) {
-    }
-
-    @Override
-    public void exitSoma(OOFinalParser.SomaContext ctx) {
+    public void exitCondicao(OOFinalParser.CondicaoContext ctx) {
     }
 
     @Override
@@ -99,11 +59,19 @@ public class OOFinalBaseListener implements OOFinalListener {
     }
 
     @Override
-    public void enterCondicao(OOFinalParser.CondicaoContext ctx) {
+    public void enterSoma(OOFinalParser.SomaContext ctx) {
     }
 
     @Override
-    public void exitCondicao(OOFinalParser.CondicaoContext ctx) {
+    public void exitSoma(OOFinalParser.SomaContext ctx) {
+    }
+
+    @Override
+    public void enterInteiro(OOFinalParser.InteiroContext ctx) {
+    }
+
+    @Override
+    public void exitInteiro(OOFinalParser.InteiroContext ctx) {
     }
 
     @Override
@@ -112,6 +80,22 @@ public class OOFinalBaseListener implements OOFinalListener {
 
     @Override
     public void exitThen2(OOFinalParser.Then2Context ctx) {
+    }
+
+    @Override
+    public void enterElse2(OOFinalParser.Else2Context ctx) {
+    }
+
+    @Override
+    public void exitElse2(OOFinalParser.Else2Context ctx) {
+    }
+
+    @Override
+    public void enterAnd(OOFinalParser.AndContext ctx) {
+    }
+
+    @Override
+    public void exitAnd(OOFinalParser.AndContext ctx) {
     }
 
     @Override

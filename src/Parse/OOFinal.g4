@@ -10,24 +10,19 @@ grammar OOFinal;
 
 operation    : exp * ;
 
-factor  : value ;
-
 
 /** A value can be either a nested array/struct or a simple integer (INT) */
 
 inteiro :  INT;
 booleano:  BOOL;
 
-value :  inteiro   
-| booleano
-;
 
 // Operações possíveis
 soma : SUM exp exp ;
 subtracao: SUB exp exp ;
 negacao: SUB exp ;
 and:  AND exp exp ;
-condicao: IF booleano then2 else2;
+condicao: IF exp then2 else2;
 then2 : THEN operation ;
 else2 : ELSE operation ;
 
@@ -36,7 +31,8 @@ exp :  soma
 | negacao
 | and
 | condicao 
-| value
+| inteiro
+| booleano
 ;
 
 
