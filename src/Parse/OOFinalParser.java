@@ -23,10 +23,10 @@ public class OOFinalParser extends Parser {
 	public static final int
 		RULE_operation = 0, RULE_inteiro = 1, RULE_booleano = 2, RULE_soma = 3, 
 		RULE_subtracao = 4, RULE_negacao = 5, RULE_and = 6, RULE_condicao = 7, 
-		RULE_then2 = 8, RULE_else2 = 9, RULE_exp = 10;
+		RULE_exp = 8;
 	public static final String[] ruleNames = {
 		"operation", "inteiro", "booleano", "soma", "subtracao", "negacao", "and", 
-		"condicao", "then2", "else2", "exp"
+		"condicao", "exp"
 	};
 
 	@Override
@@ -73,16 +73,16 @@ public class OOFinalParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(25);
+			setState(21);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << AND) | (1L << BOOL) | (1L << INT) | (1L << SUM) | (1L << SUB) | (1L << IF))) != 0)) {
 				{
 				{
-				setState(22); exp();
+				setState(18); exp();
 				}
 				}
-				setState(27);
+				setState(23);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -121,7 +121,7 @@ public class OOFinalParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(28); match(INT);
+			setState(24); match(INT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -157,7 +157,7 @@ public class OOFinalParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(30); match(BOOL);
+			setState(26); match(BOOL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -199,9 +199,9 @@ public class OOFinalParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(32); match(SUM);
-			setState(33); exp();
-			setState(34); exp();
+			setState(28); match(SUM);
+			setState(29); exp();
+			setState(30); exp();
 			}
 		}
 		catch (RecognitionException re) {
@@ -243,9 +243,9 @@ public class OOFinalParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(36); match(SUB);
-			setState(37); exp();
-			setState(38); exp();
+			setState(32); match(SUB);
+			setState(33); exp();
+			setState(34); exp();
 			}
 		}
 		catch (RecognitionException re) {
@@ -284,8 +284,8 @@ public class OOFinalParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(40); match(SUB);
-			setState(41); exp();
+			setState(36); match(SUB);
+			setState(37); exp();
 			}
 		}
 		catch (RecognitionException re) {
@@ -327,9 +327,9 @@ public class OOFinalParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(43); match(AND);
-			setState(44); exp();
-			setState(45); exp();
+			setState(39); match(AND);
+			setState(40); exp();
+			setState(41); exp();
 			}
 		}
 		catch (RecognitionException re) {
@@ -344,15 +344,14 @@ public class OOFinalParser extends Parser {
 	}
 
 	public static class CondicaoContext extends ParserRuleContext {
-		public ExpContext exp() {
-			return getRuleContext(ExpContext.class,0);
+		public List<ExpContext> exp() {
+			return getRuleContexts(ExpContext.class);
 		}
-		public Then2Context then2() {
-			return getRuleContext(Then2Context.class,0);
+		public TerminalNode THEN() { return getToken(OOFinalParser.THEN, 0); }
+		public ExpContext exp(int i) {
+			return getRuleContext(ExpContext.class,i);
 		}
-		public Else2Context else2() {
-			return getRuleContext(Else2Context.class,0);
-		}
+		public TerminalNode ELSE() { return getToken(OOFinalParser.ELSE, 0); }
 		public TerminalNode IF() { return getToken(OOFinalParser.IF, 0); }
 		public CondicaoContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -374,90 +373,12 @@ public class OOFinalParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(47); match(IF);
+			setState(43); match(IF);
+			setState(44); exp();
+			setState(45); match(THEN);
+			setState(46); exp();
+			setState(47); match(ELSE);
 			setState(48); exp();
-			setState(49); then2();
-			setState(50); else2();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Then2Context extends ParserRuleContext {
-		public ExpContext exp() {
-			return getRuleContext(ExpContext.class,0);
-		}
-		public TerminalNode THEN() { return getToken(OOFinalParser.THEN, 0); }
-		public Then2Context(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_then2; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OOFinalListener ) ((OOFinalListener)listener).enterThen2(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OOFinalListener ) ((OOFinalListener)listener).exitThen2(this);
-		}
-	}
-
-	public final Then2Context then2() throws RecognitionException {
-		Then2Context _localctx = new Then2Context(_ctx, getState());
-		enterRule(_localctx, 16, RULE_then2);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(52); match(THEN);
-			setState(53); exp();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class Else2Context extends ParserRuleContext {
-		public ExpContext exp() {
-			return getRuleContext(ExpContext.class,0);
-		}
-		public TerminalNode ELSE() { return getToken(OOFinalParser.ELSE, 0); }
-		public Else2Context(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_else2; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OOFinalListener ) ((OOFinalListener)listener).enterElse2(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OOFinalListener ) ((OOFinalListener)listener).exitElse2(this);
-		}
-	}
-
-	public final Else2Context else2() throws RecognitionException {
-		Else2Context _localctx = new Else2Context(_ctx, getState());
-		enterRule(_localctx, 18, RULE_else2);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(55); match(ELSE);
-			setState(56); exp();
 			}
 		}
 		catch (RecognitionException re) {
@@ -509,56 +430,56 @@ public class OOFinalParser extends Parser {
 
 	public final ExpContext exp() throws RecognitionException {
 		ExpContext _localctx = new ExpContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_exp);
+		enterRule(_localctx, 16, RULE_exp);
 		try {
-			setState(65);
+			setState(57);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(58); soma();
+				setState(50); soma();
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(59); subtracao();
+				setState(51); subtracao();
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(60); negacao();
+				setState(52); negacao();
 				}
 				break;
 
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(61); and();
+				setState(53); and();
 				}
 				break;
 
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(62); condicao();
+				setState(54); condicao();
 				}
 				break;
 
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(63); inteiro();
+				setState(55); inteiro();
 				}
 				break;
 
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(64); booleano();
+				setState(56); booleano();
 				}
 				break;
 			}
@@ -575,22 +496,21 @@ public class OOFinalParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\2\3\fF\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t"+
-		"\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32\n\2\f\2\16\2\35\13\2\3\3\3\3\3"+
-		"\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t"+
-		"\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3"+
-		"\f\5\fD\n\f\3\f\2\r\2\4\6\b\n\f\16\20\22\24\26\2\2A\2\33\3\2\2\2\4\36"+
-		"\3\2\2\2\6 \3\2\2\2\b\"\3\2\2\2\n&\3\2\2\2\f*\3\2\2\2\16-\3\2\2\2\20\61"+
-		"\3\2\2\2\22\66\3\2\2\2\249\3\2\2\2\26C\3\2\2\2\30\32\5\26\f\2\31\30\3"+
-		"\2\2\2\32\35\3\2\2\2\33\31\3\2\2\2\33\34\3\2\2\2\34\3\3\2\2\2\35\33\3"+
-		"\2\2\2\36\37\7\7\2\2\37\5\3\2\2\2 !\7\6\2\2!\7\3\2\2\2\"#\7\b\2\2#$\5"+
-		"\26\f\2$%\5\26\f\2%\t\3\2\2\2&\'\7\t\2\2\'(\5\26\f\2()\5\26\f\2)\13\3"+
-		"\2\2\2*+\7\t\2\2+,\5\26\f\2,\r\3\2\2\2-.\7\3\2\2./\5\26\f\2/\60\5\26\f"+
-		"\2\60\17\3\2\2\2\61\62\7\n\2\2\62\63\5\26\f\2\63\64\5\22\n\2\64\65\5\24"+
-		"\13\2\65\21\3\2\2\2\66\67\7\4\2\2\678\5\26\f\28\23\3\2\2\29:\7\5\2\2:"+
-		";\5\26\f\2;\25\3\2\2\2<D\5\b\5\2=D\5\n\6\2>D\5\f\7\2?D\5\16\b\2@D\5\20"+
-		"\t\2AD\5\4\3\2BD\5\6\4\2C<\3\2\2\2C=\3\2\2\2C>\3\2\2\2C?\3\2\2\2C@\3\2"+
-		"\2\2CA\3\2\2\2CB\3\2\2\2D\27\3\2\2\2\4\33C";
+		"\2\3\f>\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t"+
+		"\t\4\n\t\n\3\2\7\2\26\n\2\f\2\16\2\31\13\2\3\3\3\3\3\4\3\4\3\5\3\5\3\5"+
+		"\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3"+
+		"\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\n<\n\n\3\n\2\13\2\4\6\b\n\f\16\20"+
+		"\22\2\2;\2\27\3\2\2\2\4\32\3\2\2\2\6\34\3\2\2\2\b\36\3\2\2\2\n\"\3\2\2"+
+		"\2\f&\3\2\2\2\16)\3\2\2\2\20-\3\2\2\2\22;\3\2\2\2\24\26\5\22\n\2\25\24"+
+		"\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30\3\3\2\2\2\31\27"+
+		"\3\2\2\2\32\33\7\7\2\2\33\5\3\2\2\2\34\35\7\6\2\2\35\7\3\2\2\2\36\37\7"+
+		"\b\2\2\37 \5\22\n\2 !\5\22\n\2!\t\3\2\2\2\"#\7\t\2\2#$\5\22\n\2$%\5\22"+
+		"\n\2%\13\3\2\2\2&\'\7\t\2\2\'(\5\22\n\2(\r\3\2\2\2)*\7\3\2\2*+\5\22\n"+
+		"\2+,\5\22\n\2,\17\3\2\2\2-.\7\n\2\2./\5\22\n\2/\60\7\4\2\2\60\61\5\22"+
+		"\n\2\61\62\7\5\2\2\62\63\5\22\n\2\63\21\3\2\2\2\64<\5\b\5\2\65<\5\n\6"+
+		"\2\66<\5\f\7\2\67<\5\16\b\28<\5\20\t\29<\5\4\3\2:<\5\6\4\2;\64\3\2\2\2"+
+		";\65\3\2\2\2;\66\3\2\2\2;\67\3\2\2\2;8\3\2\2\2;9\3\2\2\2;:\3\2\2\2<\23"+
+		"\3\2\2\2\4\27;";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

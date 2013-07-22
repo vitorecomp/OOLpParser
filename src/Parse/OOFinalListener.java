@@ -28,12 +28,6 @@ public interface OOFinalListener extends ParseTreeListener {
 	void enterInteiro(OOFinalParser.InteiroContext ctx);
 	void exitInteiro(OOFinalParser.InteiroContext ctx);
 
-	void enterThen2(OOFinalParser.Then2Context ctx);
-	void exitThen2(OOFinalParser.Then2Context ctx);
-
-	void enterElse2(OOFinalParser.Else2Context ctx);
-	void exitElse2(OOFinalParser.Else2Context ctx);
-
 	void enterAnd(OOFinalParser.AndContext ctx);
 	void exitAnd(OOFinalParser.AndContext ctx);
 }

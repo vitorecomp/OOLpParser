@@ -24,9 +24,8 @@ soma : SUM exp exp ;
 subtracao: SUB exp exp ;
 negacao: SUB exp ;
 and:  AND exp exp ;
-condicao: IF exp then2 else2;
-then2 : THEN exp ;
-else2 : ELSE exp ;
+condicao: IF exp THEN exp ELSE exp;
+
 
 exp :  soma
 | subtracao
@@ -41,8 +40,8 @@ exp :  soma
 // parser rules start with lowercase letters, lexer rules with uppercase
 //Identifica as expressões
 AND : [&|And]+;
-THEN : [then]+;
-ELSE : [else]+;
+THEN : [then|?]+;
+ELSE : [else|:]+;
 BOOL: ([True]|[False])+;
 INT : [0-9]+ ; // Define token INT as one or more digits
 SUM : [+|Add]+;

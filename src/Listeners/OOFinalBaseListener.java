@@ -14,9 +14,17 @@ public class OOFinalBaseListener implements OOFinalListener {
     Stack<Expressao> pilha = new Stack<Expressao>();
     @Override
     public void enterBooleano(OOFinalParser.BooleanoContext ctx) {
-        //Crio um boolenao
-        
-        //Adiciona na Pilha
+        //cria uma expressao Inteiro
+        boolean value = false;
+        if(ctx.BOOL().getText().equals("True"))
+        {
+              value = true; 
+        }else{
+              value  = false; 
+        }
+        ValorBooleano valueExp = new ValorBooleano(value);
+        //coloca na pilha
+        pilha.push(valueExp);
     }
 
     @Override
@@ -42,7 +50,16 @@ public class OOFinalBaseListener implements OOFinalListener {
     @Override
     public void exitOperation(OOFinalParser.OperationContext ctx) {
         //Avlaiar a Expressao
+        try
+        {
+        Expressao exp = (Expressao) pilha.pop();
+        ValorGenerico termo = (ValorGenerico) exp.avaliar();
+        System.out.println(termo.getValor());
         //Imprimir o resultador
+        }catch( ErroDeTipo e)
+        {
+            System.out.println("Erro de Tipo");
+        }
     }
 
     @Override
@@ -52,9 +69,11 @@ public class OOFinalBaseListener implements OOFinalListener {
 
     @Override
     public void exitNegacao(OOFinalParser.NegacaoContext ctx) {
-        //pega um valor da pilha
-        //cria uma expressao negaçao
-        //addicina na pilha
+        Expressao valueExp1 = (Expressao) pilha.pop();
+        //cria uma soma
+        ExpressaoNegacao exp = new ExpressaoNegacao(valueExp1);
+        //coloca na pilha
+        pilha.push(exp);
     }
 
     @Override
@@ -64,12 +83,14 @@ public class OOFinalBaseListener implements OOFinalListener {
 
     @Override
     public void exitCondicao(OOFinalParser.CondicaoContext ctx) {
-        //pega 3 valores na pilha
-        //ordem ELSE
-        //THEN
-        //CONDIÇAO
-        //cria uma expressao if
+        Expressao valueExp1 = (Expressao) pilha.pop();
+        Expressao valueExp2 = (Expressao) pilha.pop();
+        Expressao valueExp3 = (Expressao) pilha.pop();
+  
+        //cria uma soma
+        ExpressaoIF exp = new ExpressaoIF(valueExp3, valueExp2, valueExp1);
         //coloca na pilha
+        pilha.push(exp);
     }
 
     @Override
@@ -80,8 +101,12 @@ public class OOFinalBaseListener implements OOFinalListener {
     @Override
     public void exitSubtracao(OOFinalParser.SubtracaoContext ctx) {
         //tira dois da pilha
-        //cria uma subtraço
+        Expressao valueExp1 = (Expressao) pilha.pop();
+        Expressao valueExp2 = (Expressao) pilha.pop();
+        //cria uma subtrçao
+        ExpressaoSubtracao exp = new ExpressaoSubtracao(valueExp1, valueExp2);
         //coloca na pilha
+        pilha.push(exp);
     }
 
     @Override
@@ -92,14 +117,21 @@ public class OOFinalBaseListener implements OOFinalListener {
     @Override
     public void exitSoma(OOFinalParser.SomaContext ctx) {
         //tira dois da pilha
-        //cria uma subtraço
+        Expressao valueExp1 = (Expressao) pilha.pop();
+        Expressao valueExp2 = (Expressao) pilha.pop();
+        //cria uma soma
+        ExpressaoSoma exp = new ExpressaoSoma(valueExp1, valueExp2);
         //coloca na pilha
+        pilha.push(exp);
     }
 
     @Override
     public void enterInteiro(OOFinalParser.InteiroContext ctx) {
         //cria uma expressao Inteiro
+        int value  = Integer.valueOf(ctx.INT().getText());
+        ValorInteiro valueExp = new ValorInteiro(value);
         //coloca na pilha
+        pilha.push(valueExp);
     }
 
     @Override
@@ -107,26 +139,7 @@ public class OOFinalBaseListener implements OOFinalListener {
         //nao e nessesario fazer nada aqui
     }
 
-    @Override
-    public void enterThen2(OOFinalParser.Then2Context ctx) {
-        //nao e necessario fazer nda aqui
-    }
-
-    @Override
-    public void exitThen2(OOFinalParser.Then2Context ctx) {
-        //nao e necessario fazer nda aqui
-    }
-
-    @Override
-    public void enterElse2(OOFinalParser.Else2Context ctx) {
-        //nao e necessario fazer nda aqui
-    }
-
-    @Override
-    public void exitElse2(OOFinalParser.Else2Context ctx) {
-        //nao e necessario fazer nda aqui
-    }
-
+    
     @Override
     public void enterAnd(OOFinalParser.AndContext ctx) {
         //nao e necessario fazer nda aqui
@@ -134,9 +147,13 @@ public class OOFinalBaseListener implements OOFinalListener {
 
     @Override
     public void exitAnd(OOFinalParser.AndContext ctx) {
-        //pega dois valores da pilha
-        //cria uma nova nova expressao And
-        //adicino na pilha
+        //tira dois da pilha
+        Expressao valueExp1 = (Expressao) pilha.pop();
+        Expressao valueExp2 = (Expressao) pilha.pop();
+        //cria uma subtrçao
+        ExpressaoAnd exp = new ExpressaoAnd(valueExp1, valueExp2);
+        //coloca na pilha
+        pilha.push(exp);
     }
 
     @Override
