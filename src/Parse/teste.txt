@@ -1,0 +1,11 @@
+#resultado x
+ -{
+   if (& {True,True} 
+	then if True 
+	   then
+		& & False True False
+	   else 			#comentário teste
+		+ 1 1 
+  	else - 2
+  ,4}
+	

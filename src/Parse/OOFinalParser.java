@@ -15,10 +15,10 @@ public class OOFinalParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		AND=1, THEN=2, ELSE=3, BOOL=4, INT=5, SUM=6, SUB=7, IF=8, WS=9;
+		AND=1, THEN=2, ELSE=3, BOOL=4, INT=5, SUM=6, SUB=7, IF=8, WS=9, COMENTARIO=10;
 	public static final String[] tokenNames = {
 		"<INVALID>", "AND", "THEN", "ELSE", "BOOL", "INT", "SUM", "SUB", "IF", 
-		"WS"
+		"WS", "COMENTARIO"
 	};
 	public static final int
 		RULE_operation = 0, RULE_inteiro = 1, RULE_booleano = 2, RULE_soma = 3, 
@@ -69,24 +69,22 @@ public class OOFinalParser extends Parser {
 	public final OperationContext operation() throws RecognitionException {
 		OperationContext _localctx = new OperationContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_operation);
+		int _la;
 		try {
-			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(25);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
-			while ( _alt!=2 && _alt!=-1 ) {
-				if ( _alt==1 ) {
-					{
-					{
-					setState(22); exp();
-					}
-					} 
+			_la = _input.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << AND) | (1L << BOOL) | (1L << INT) | (1L << SUM) | (1L << SUB) | (1L << IF))) != 0)) {
+				{
+				{
+				setState(22); exp();
+				}
 				}
 				setState(27);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
+				_la = _input.LA(1);
 			}
 			}
 		}
@@ -394,8 +392,8 @@ public class OOFinalParser extends Parser {
 	}
 
 	public static class Then2Context extends ParserRuleContext {
-		public OperationContext operation() {
-			return getRuleContext(OperationContext.class,0);
+		public ExpContext exp() {
+			return getRuleContext(ExpContext.class,0);
 		}
 		public TerminalNode THEN() { return getToken(OOFinalParser.THEN, 0); }
 		public Then2Context(ParserRuleContext parent, int invokingState) {
@@ -419,7 +417,7 @@ public class OOFinalParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(52); match(THEN);
-			setState(53); operation();
+			setState(53); exp();
 			}
 		}
 		catch (RecognitionException re) {
@@ -434,8 +432,8 @@ public class OOFinalParser extends Parser {
 	}
 
 	public static class Else2Context extends ParserRuleContext {
-		public OperationContext operation() {
-			return getRuleContext(OperationContext.class,0);
+		public ExpContext exp() {
+			return getRuleContext(ExpContext.class,0);
 		}
 		public TerminalNode ELSE() { return getToken(OOFinalParser.ELSE, 0); }
 		public Else2Context(ParserRuleContext parent, int invokingState) {
@@ -459,7 +457,7 @@ public class OOFinalParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(55); match(ELSE);
-			setState(56); operation();
+			setState(56); exp();
 			}
 		}
 		catch (RecognitionException re) {
@@ -577,7 +575,7 @@ public class OOFinalParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\2\3\13F\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t"+
+		"\2\3\fF\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t"+
 		"\t\4\n\t\n\4\13\t\13\4\f\t\f\3\2\7\2\32\n\2\f\2\16\2\35\13\2\3\3\3\3\3"+
 		"\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\t"+
 		"\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3"+
@@ -589,10 +587,10 @@ public class OOFinalParser extends Parser {
 		"\26\f\2$%\5\26\f\2%\t\3\2\2\2&\'\7\t\2\2\'(\5\26\f\2()\5\26\f\2)\13\3"+
 		"\2\2\2*+\7\t\2\2+,\5\26\f\2,\r\3\2\2\2-.\7\3\2\2./\5\26\f\2/\60\5\26\f"+
 		"\2\60\17\3\2\2\2\61\62\7\n\2\2\62\63\5\26\f\2\63\64\5\22\n\2\64\65\5\24"+
-		"\13\2\65\21\3\2\2\2\66\67\7\4\2\2\678\5\2\2\28\23\3\2\2\29:\7\5\2\2:;"+
-		"\5\2\2\2;\25\3\2\2\2<D\5\b\5\2=D\5\n\6\2>D\5\f\7\2?D\5\16\b\2@D\5\20\t"+
-		"\2AD\5\4\3\2BD\5\6\4\2C<\3\2\2\2C=\3\2\2\2C>\3\2\2\2C?\3\2\2\2C@\3\2\2"+
-		"\2CA\3\2\2\2CB\3\2\2\2D\27\3\2\2\2\4\33C";
+		"\13\2\65\21\3\2\2\2\66\67\7\4\2\2\678\5\26\f\28\23\3\2\2\29:\7\5\2\2:"+
+		";\5\26\f\2;\25\3\2\2\2<D\5\b\5\2=D\5\n\6\2>D\5\f\7\2?D\5\16\b\2@D\5\20"+
+		"\t\2AD\5\4\3\2BD\5\6\4\2C<\3\2\2\2C=\3\2\2\2C>\3\2\2\2C?\3\2\2\2C@\3\2"+
+		"\2\2CA\3\2\2\2CB\3\2\2\2D\27\3\2\2\2\4\33C";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

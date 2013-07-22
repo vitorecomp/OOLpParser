@@ -1,6 +1,5 @@
 // Generated from C:\Users\Vitor\Desktop\WorkSpace\OOLpParser\src\Parse\OOFinal.g4 by ANTLR 4.0
 package Parse;
-import Parse.OOFinalParser;
 import org.antlr.v4.runtime.tree.*;
 import org.antlr.v4.runtime.Token;
 

@@ -1,4 +1,4 @@
-package br.cic.unb.poo.lp;
+package Linguagens;
 
 public class ValorBooleano extends ValorGenerico<Boolean> {
 

@@ -1,4 +1,4 @@
-package br.cic.unb.poo.lp;
+package Linguagens;
 
 /**
  * Classe que representa uma expressao do tipo IF. 

@@ -8,11 +8,13 @@ grammar OOFinal;
  * PARSER RULES
  *------------------------------------------------------------------*/
 
+//Ponto inicial
 operation    : exp * ;
 
 
 /** A value can be either a nested array/struct or a simple integer (INT) */
 
+//Valores definidos na linguagem
 inteiro :  INT;
 booleano:  BOOL;
 
@@ -23,8 +25,8 @@ subtracao: SUB exp exp ;
 negacao: SUB exp ;
 and:  AND exp exp ;
 condicao: IF exp then2 else2;
-then2 : THEN operation ;
-else2 : ELSE operation ;
+then2 : THEN exp ;
+else2 : ELSE exp ;
 
 exp :  soma
 | subtracao
@@ -37,12 +39,16 @@ exp :  soma
 
 
 // parser rules start with lowercase letters, lexer rules with uppercase
-AND : [&]+;
+//Identifica as expressões
+AND : [&|And]+;
 THEN : [then]+;
 ELSE : [else]+;
 BOOL: ([True]|[False])+;
 INT : [0-9]+ ; // Define token INT as one or more digits
-SUM : [+]+;
-SUB : [-]+;
+SUM : [+|Add]+;
+SUB : [-|Sub]+;
 IF : [if]+;
-WS : [ \t\r\n()]+ -> skip ; // Define whitespace rule, toss it out
+//Identifica coisas que não são necessárias
+WS : [ \t\r\n(){},]+ -> skip ; 
+//Identifica comentários
+COMENTARIO : '#' ~[\r\n]* '\r'? '\n' -> skip ;
